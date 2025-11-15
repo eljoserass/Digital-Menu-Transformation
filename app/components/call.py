@@ -40,7 +40,7 @@ def _response_view() -> rx.Component:
     return rx.el.div(
         rx.el.h3("Here's my response:", class_name="text-xl font-bold text-gray-100"),
         rx.el.audio(
-            src=CallState.audio_response_src,
+            src=rx.get_upload_url(CallState.audio_response_src),
             controls=True,
             autoplay=True,
             class_name="w-full mt-4",

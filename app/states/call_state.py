@@ -18,9 +18,27 @@ class CallState(rx.State):
     audio_response_src: str = ""
     uploaded_audio_path: str = ""
 
-    async def _generate_audio_response(self) -> str:
-        """Generates a mock audio response by returning a static file."""
-        return "/sample.mp3"
+    async def _generate_audio_response(self) -> str | None:
+        """Generates a mock audio response by copying a sample file to a new unique path."""
+        await asyncio.sleep(2)
+        sample_audio_path = Path("assets") / "sample.mp3"
+        if not sample_audio_path.exists():
+            logging.error("Sample audio file 'assets/sample.mp3' not found.")
+            return None
+        try:
+            upload_dir = rx.get_upload_dir()
+            upload_dir.mkdir(parents=True, exist_ok=True)
+            unique_filename = f"response_{uuid.uuid4()}.mp3"
+            new_audio_path = upload_dir / unique_filename
+            with (
+                sample_audio_path.open("rb") as src_file,
+                new_audio_path.open("wb") as dest_file,
+            ):
+                dest_file.write(src_file.read())
+            return unique_filename
+        except Exception as e:
+            logging.exception(f"Failed to create mock audio response: {e}")
+            return None
 
     @rx.event
     def start_recording(self):
@@ -54,10 +72,11 @@ class CallState(rx.State):
             with file_path.open("wb") as f:
                 f.write(upload_data)
             self.uploaded_audio_path = str(file_path)
-            await asyncio.sleep(1)
             response_filename = await self._generate_audio_response()
             if response_filename:
                 self.audio_response_src = response_filename
+            else:
+                self.error_message = "Could not generate audio response."
         except Exception as e:
             logging.exception(f"Audio processing failed: {e}")
             self.error_message = "An unexpected error occurred during processing."
