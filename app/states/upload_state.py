@@ -60,8 +60,7 @@ class UploadState(rx.State):
 
 
         """
-        api_key = "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"
-        client_openai = OpenAI(api_key=api_key)
+        client_openai = OpenAI()
 
         encoded_image = encode_image(file_path)
         response = client_openai.responses.parse(

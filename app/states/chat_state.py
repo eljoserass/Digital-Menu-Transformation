@@ -52,8 +52,7 @@ class ChatState(rx.State):
             self._add_message(
                 f"", "assistant"
             )
-            api_key = "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"
-            client_openai = OpenAI(api_key=api_key)
+            client_openai = OpenAI()
 
             print ("////MENU LOADED/////")
             print (menu_to_str(menu_state.menu_id))
