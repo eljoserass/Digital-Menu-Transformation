@@ -58,34 +58,77 @@ def _response_view() -> rx.Component:
 def call_interface() -> rx.Component:
     """The main interface for the call tab."""
     return rx.el.div(
-        rx.cond(
-            CallState.audio_response_src != "",
-            _response_view(),
+        rx.upload.root(
             rx.cond(
-                CallState.is_processing,
-                _processing_view(),
-                rx.el.div(
-                    rx.el.h2(
-                        "Voice Assistant",
-                        class_name="text-3xl font-bold text-gray-100 mb-2",
-                    ),
-                    rx.el.p(
-                        "Ask me anything about the menu!",
-                        class_name="text-gray-400 mb-12",
-                    ),
-                    _record_button(),
-                    rx.cond(
-                        CallState.error_message != "",
-                        rx.el.div(
-                            rx.icon("flag_triangle_right", class_name="h-5 w-5 mr-2"),
-                            CallState.error_message,
-                            class_name="flex items-center mt-6 text-sm text-red-500 bg-red-900 p-3 rounded-lg",
+                CallState.audio_response_src != "",
+                _response_view(),
+                rx.cond(
+                    CallState.is_processing,
+                    _processing_view(),
+                    rx.el.div(
+                        rx.el.h2(
+                            "Voice Assistant",
+                            class_name="text-3xl font-bold text-gray-100 mb-2",
                         ),
-                        None,
+                        rx.el.p(
+                            "Ask me anything about the menu!",
+                            class_name="text-gray-400 mb-12",
+                        ),
+                        _record_button(),
+                        rx.cond(
+                            CallState.error_message != "",
+                            rx.el.div(
+                                rx.icon(
+                                    "flag_triangle_right", class_name="h-5 w-5 mr-2"
+                                ),
+                                CallState.error_message,
+                                class_name="flex items-center mt-6 text-sm text-red-500 bg-red-900 p-3 rounded-lg",
+                            ),
+                            None,
+                        ),
+                        class_name="text-center",
                     ),
-                    class_name="text-center",
                 ),
             ),
+            id=CALL_UPLOAD_ID,
+            accept={"audio/webm": [".webm"]},
+            on_drop=CallState.handle_audio_upload,
+            class_name="w-full h-full",
+        ),
+        rx.script(
+            """
+let mediaRecorder;
+let audioChunks = [];
+
+async function startAudioRecording() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+        };
+        mediaRecorder.onstop = async () => {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+            const audioFile = new File([audioBlob], "recording.webm", { type: 'audio/webm' });
+            const upload_fn = window.upload_files['%s'];
+            if (upload_fn) {
+                await upload_fn([audioFile]);
+            }
+            audioChunks = [];
+        };
+        mediaRecorder.start();
+    } catch (error) {
+        console.error('Error accessing microphone:', error);
+    }
+}
+
+function stopAudioRecording() {
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+        mediaRecorder.stop();
+    }
+}
+"""
+            % CALL_UPLOAD_ID
         ),
         class_name="flex items-center justify-center h-[calc(100vh-8.5rem)] w-full max-w-3xl mx-auto",
     )
