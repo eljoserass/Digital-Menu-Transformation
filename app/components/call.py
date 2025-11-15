@@ -88,10 +88,7 @@ def call_interface() -> rx.Component:
             ),
         ),
         rx.upload.root(
-            id=CALL_UPLOAD_ID,
-            accept={"audio/webm": [".webm"]},
-            on_drop=CallState.handle_audio_upload,
-            class_name="hidden",
+            id=CALL_UPLOAD_ID, accept={"audio/webm": [".webm"]}, class_name="hidden"
         ),
         rx.script(
             """
@@ -108,9 +105,17 @@ async function startAudioRecording() {
         mediaRecorder.onstop = async () => {
             const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
             const audioFile = new File([audioBlob], "recording.webm", { type: 'audio/webm' });
+
+            // Create a DataTransfer to use with the upload function
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(audioFile);
+
+            // Get the upload function and trigger the upload
             const upload_fn = window.upload_files['%s'];
             if (upload_fn) {
-                await upload_fn([audioFile]);
+                await upload_fn(dataTransfer.files);
+            } else {
+                console.error('Upload function not found for ID: %s');
             }
             audioChunks = [];
         };
@@ -126,7 +131,7 @@ function stopAudioRecording() {
     }
 }
 """
-            % CALL_UPLOAD_ID
+            % (CALL_UPLOAD_ID, CALL_UPLOAD_ID)
         ),
         class_name="flex items-center justify-center h-[calc(100vh-8.5rem)] w-full max-w-3xl mx-auto",
     )
