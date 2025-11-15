@@ -6,7 +6,7 @@ def _allergen_badge(allergen: str) -> rx.Component:
     """A small badge to display an allergen."""
     return rx.el.span(
         allergen,
-        class_name="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300",
+        class_name="bg-red-900 text-red-300 text-xs font-medium px-2.5 py-0.5 rounded-full",
     )
 
 
@@ -14,7 +14,7 @@ def _ingredient_tag(ingredient: str) -> rx.Component:
     """A tag for displaying an ingredient."""
     return rx.el.span(
         ingredient,
-        class_name="bg-gray-100 text-gray-700 text-xs font-medium px-2 py-1 rounded-md dark:bg-gray-700 dark:text-gray-300",
+        class_name="bg-gray-700 text-gray-300 text-xs font-medium px-2 py-1 rounded-md",
     )
 
 
@@ -22,13 +22,9 @@ def _menu_item_card(item: MenuItem) -> rx.Component:
     """Card to display a single menu item."""
     return rx.el.div(
         rx.el.div(
+            rx.el.p(item["name"], class_name="font-semibold text-lg text-gray-100"),
             rx.el.p(
-                item["name"],
-                class_name="font-semibold text-lg text-gray-800 dark:text-gray-100",
-            ),
-            rx.el.p(
-                f"€{item['price']:.2f}",
-                class_name="font-bold text-lg text-red-600 dark:text-red-500",
+                f"€{item['price']:.2f}", class_name="font-bold text-lg text-red-500"
             ),
             class_name="flex justify-between items-center mb-3",
         ),
@@ -36,8 +32,7 @@ def _menu_item_card(item: MenuItem) -> rx.Component:
             item["ingredients"].length() > 0,
             rx.el.div(
                 rx.el.p(
-                    "Ingredientes:",
-                    class_name="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2",
+                    "Ingredientes:", class_name="text-sm font-medium text-gray-400 mb-2"
                 ),
                 rx.el.div(
                     rx.foreach(item["ingredients"], _ingredient_tag),
@@ -50,8 +45,7 @@ def _menu_item_card(item: MenuItem) -> rx.Component:
             item["allergens"].length() > 0,
             rx.el.div(
                 rx.el.p(
-                    "Alérgenos:",
-                    class_name="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2",
+                    "Alérgenos:", class_name="text-sm font-medium text-gray-400 mb-2"
                 ),
                 rx.el.div(
                     rx.foreach(item["allergens"], _allergen_badge),
@@ -60,7 +54,7 @@ def _menu_item_card(item: MenuItem) -> rx.Component:
             ),
             None,
         ),
-        class_name="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-red-300 dark:hover:border-red-500 transition-all duration-300 transform hover:-translate-y-1",
+        class_name="bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-700 hover:shadow-lg hover:border-red-500 transition-all duration-300 transform hover:-translate-y-1",
     )
 
 
@@ -69,7 +63,7 @@ def _menu_section(section: MenuSection) -> rx.Component:
     return rx.el.div(
         rx.el.h2(
             section["title"],
-            class_name="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 border-b-2 border-red-600 pb-2",
+            class_name="text-2xl font-bold text-gray-100 mb-6 border-b-2 border-red-600 pb-2",
         ),
         rx.el.div(
             rx.foreach(section["items"], _menu_item_card),
@@ -85,19 +79,18 @@ def _menu_not_found() -> rx.Component:
         rx.el.div(
             rx.icon("search-x", class_name="h-16 w-16 text-red-500"),
             rx.el.h2(
-                "Menu Not Found",
-                class_name="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-4",
+                "Menu Not Found", class_name="text-2xl font-bold text-gray-100 mt-4"
             ),
             rx.el.p(
                 "Sorry, we couldn't find the menu you're looking for.",
-                class_name="text-gray-500 dark:text-gray-400 mt-2",
+                class_name="text-gray-400 mt-2",
             ),
             rx.el.a(
                 "View Sample Menu",
                 href="/menu/sample",
                 class_name="mt-6 inline-block bg-red-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-red-700 transition-colors",
             ),
-            class_name="text-center bg-white dark:bg-gray-800 p-12 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700",
+            class_name="text-center bg-gray-800 p-12 rounded-lg shadow-lg border border-gray-700",
         ),
         class_name="flex items-center justify-center h-[60vh]",
     )
