@@ -8,7 +8,7 @@ def _record_button() -> rx.Component:
         rx.el.button(
             rx.cond(
                 CallState.is_recording,
-                rx.image(src="placeholder.svg", class_name="h-12 w-12"),
+                rx.icon("radio", class_name="h-12 w-12 text-white animate-pulse"),
                 rx.icon("mic", class_name="h-12 w-12 text-white"),
             ),
             on_click=rx.cond(
@@ -40,7 +40,7 @@ def _response_view() -> rx.Component:
     return rx.el.div(
         rx.el.h3("Here's my response:", class_name="text-xl font-bold text-gray-100"),
         rx.el.audio(
-            src=rx.get_upload_url(CallState.audio_response_src),
+            src=CallState.audio_response_src,
             controls=True,
             autoplay=True,
             class_name="w-full mt-4",
