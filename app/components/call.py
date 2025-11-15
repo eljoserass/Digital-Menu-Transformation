@@ -8,7 +8,7 @@ def _record_button() -> rx.Component:
         rx.upload.root(
             rx.el.div(
                 rx.icon("mic", class_name="h-12 w-12 text-white"),
-                class_name="flex items-center justify-center h-32 w-32 rounded-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-lg cursor-pointer",
+                class_name="flex items-center justify-center h-32 w-32 rounded-full bg-red-600 hover:bg-red-700 transition-all duration-300 shadow-lg cursor-pointer",
             ),
             id=CALL_UPLOAD_ID,
             accept={"audio/webm": [".webm"], "audio/mp4": [".mp4"]},
@@ -25,7 +25,7 @@ def _record_button() -> rx.Component:
 def _processing_view() -> rx.Component:
     """View displayed while the audio is being processed."""
     return rx.el.div(
-        rx.spinner(class_name="h-16 w-16 text-blue-600"),
+        rx.spinner(class_name="h-16 w-16 text-red-600"),
         rx.el.p("Thinking...", class_name="text-lg font-medium text-gray-700 mt-4"),
         class_name="flex flex-col items-center justify-center p-8",
     )

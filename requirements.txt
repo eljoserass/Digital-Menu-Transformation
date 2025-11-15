@@ -4,3 +4,4 @@ qrcode
 pillow
 elevenlabs
 openai
+pypdf2

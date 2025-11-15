@@ -22,7 +22,7 @@ def _tab_button(
         on_click=on_click,
         class_name=rx.cond(
             is_active,
-            "px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md",
+            "px-4 py-2 text-sm font-semibold text-white bg-red-600 rounded-md",
             "px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded-md",
         ),
     )
@@ -33,13 +33,6 @@ def menu_page() -> rx.Component:
     return rx.el.main(
         rx.el.header(
             rx.el.div(
-                rx.el.div(
-                    rx.icon("utensils-crossed", class_name="h-8 w-8 text-white"),
-                    rx.el.h1(
-                        "Digital Menu", class_name="text-3xl font-bold text-white"
-                    ),
-                    class_name="flex items-center gap-4",
-                ),
                 rx.el.div(
                     _tab_button(
                         "Menu",
@@ -56,11 +49,11 @@ def menu_page() -> rx.Component:
                         MenuPageState.active_tab == "call",
                         MenuPageState.set_active_tab("call"),
                     ),
-                    class_name="flex items-center gap-2 p-1 bg-gray-100 rounded-lg",
+                    class_name="flex items-center gap-2 p-1 bg-gray-100 rounded-lg mx-auto",
                 ),
-                class_name="flex items-center justify-between max-w-5xl mx-auto",
+                class_name="flex items-center justify-center w-full max-w-5xl mx-auto",
             ),
-            class_name="bg-blue-600 shadow-md p-4 w-full",
+            class_name="bg-white shadow-md p-4 w-full border-b",
         ),
         rx.match(
             MenuPageState.active_tab,

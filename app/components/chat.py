@@ -10,7 +10,7 @@ def _message_bubble(message: Message) -> rx.Component:
             rx.markdown(message["content"], class_name="text-sm"),
             class_name=rx.cond(
                 is_user,
-                "bg-blue-500 text-white p-3 rounded-l-lg rounded-t-lg",
+                "bg-red-600 text-white p-3 rounded-l-lg rounded-t-lg",
                 "bg-gray-200 text-gray-800 p-3 rounded-r-lg rounded-t-lg",
             ),
             max_width="80%",
@@ -34,14 +34,14 @@ def chat_interface() -> rx.Component:
                     rx.el.input(
                         name="message",
                         placeholder="Ask about the menu...",
-                        class_name="flex-1 px-4 py-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
+                        class_name="flex-1 px-4 py-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-500",
                         disabled=ChatState.is_streaming,
                         default_value=ChatState.current_message,
                     ),
                     rx.el.button(
                         rx.icon("send", class_name="h-5 w-5"),
                         type_="submit",
-                        class_name="px-4 py-2 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700 disabled:bg-gray-400",
+                        class_name="px-4 py-2 bg-red-600 text-white rounded-r-lg hover:bg-red-700 disabled:bg-gray-400",
                         disabled=ChatState.is_streaming,
                     ),
                     class_name="flex",

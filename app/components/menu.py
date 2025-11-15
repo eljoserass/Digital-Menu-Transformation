@@ -24,14 +24,22 @@ def _menu_item_card(item: MenuItem) -> rx.Component:
         rx.el.div(
             rx.el.p(item["name"], class_name="font-semibold text-lg text-gray-800"),
             rx.el.p(
-                f"${item['price']:.2f}", class_name="font-bold text-lg text-blue-600"
+                f"${item['price']:.2f}", class_name="font-bold text-lg text-red-600"
             ),
             class_name="flex justify-between items-center mb-3",
         ),
-        rx.el.p("Ingredients:", class_name="text-sm font-medium text-gray-500 mb-2"),
-        rx.el.div(
-            rx.foreach(item["ingredients"], _ingredient_tag),
-            class_name="flex flex-wrap gap-2 mb-4",
+        rx.cond(
+            item["ingredients"].length() > 0,
+            rx.el.div(
+                rx.el.p(
+                    "Ingredients:", class_name="text-sm font-medium text-gray-500 mb-2"
+                ),
+                rx.el.div(
+                    rx.foreach(item["ingredients"], _ingredient_tag),
+                    class_name="flex flex-wrap gap-2 mb-4",
+                ),
+            ),
+            None,
         ),
         rx.cond(
             item["allergens"].length() > 0,
@@ -46,7 +54,7 @@ def _menu_item_card(item: MenuItem) -> rx.Component:
             ),
             None,
         ),
-        class_name="bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1",
+        class_name="bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-lg hover:border-red-300 transition-all duration-300 transform hover:-translate-y-1",
     )
 
 
@@ -55,7 +63,7 @@ def _menu_section(section: MenuSection) -> rx.Component:
     return rx.el.div(
         rx.el.h2(
             section["title"],
-            class_name="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-600 pb-2",
+            class_name="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-red-600 pb-2",
         ),
         rx.el.div(
             rx.foreach(section["items"], _menu_item_card),
@@ -80,7 +88,7 @@ def _menu_not_found() -> rx.Component:
             rx.el.a(
                 "View Sample Menu",
                 href="/menu/sample",
-                class_name="mt-6 inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors",
+                class_name="mt-6 inline-block bg-red-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-red-700 transition-colors",
             ),
             class_name="text-center bg-white p-12 rounded-lg shadow-lg border border-gray-200",
         ),

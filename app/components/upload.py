@@ -24,7 +24,7 @@ def _upload_button() -> rx.Component:
         button_text,
         on_click=UploadState.handle_upload(rx.upload_files(upload_id=UPLOAD_ID)),
         disabled=is_working,
-        class_name="flex items-center justify-center w-full mt-4 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed",
+        class_name="flex items-center justify-center w-full mt-4 px-6 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed",
     )
 
 
@@ -55,7 +55,7 @@ def _qr_code_display() -> rx.Component:
             "Open Menu",
             href=UploadState.menu_url,
             is_external=True,
-            class_name="mt-4 inline-block w-full text-center bg-blue-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors",
+            class_name="mt-4 inline-block w-full text-center bg-red-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-red-700 transition-colors",
         ),
         rx.el.button(
             "Create Another Menu",
@@ -86,7 +86,7 @@ def upload_page() -> rx.Component:
                             "cloud-upload", class_name="w-12 h-12 stroke-gray-400 mb-4"
                         ),
                         rx.el.p(
-                            rx.el.strong("Click to upload", class_name="text-blue-600"),
+                            rx.el.strong("Click to upload", class_name="text-red-600"),
                             " or drag and drop",
                             class_name="text-gray-600",
                         ),
@@ -120,7 +120,7 @@ def upload_page() -> rx.Component:
                 rx.el.a(
                     "< Back to Menu",
                     href="/menu/sample",
-                    class_name="mt-6 text-sm text-blue-600 hover:underline text-center block",
+                    class_name="mt-6 text-sm text-red-600 hover:underline text-center block",
                 ),
                 class_name="bg-white p-8 rounded-xl shadow-lg border border-gray-200 w-full max-w-lg",
             ),

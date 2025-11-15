@@ -1,0 +1,207 @@
+[
+    {
+        "title": "ARROSSOS / PAELLA",
+        "items": [
+            {
+                "name": "Marinera o 'Senyorret'",
+                "price": 25.0,
+                "ingredients": [
+                    "de mariso",
+                    "s\u00edpia",
+                    "calamar",
+                    "musclos"
+                ],
+                "allergens": []
+            },
+            {
+                "name": "'Magatzem'",
+                "price": 25.0,
+                "ingredients": [
+                    "s\u00edpia",
+                    "carxofa",
+                    "gambes"
+                ],
+                "allergens": []
+            },
+            {
+                "name": "Amb fumet de gamba vermella",
+                "price": 25.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Negre de s\u00edpia amb la seva tinta",
+                "price": 25.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Mar i muntanya",
+                "price": 24.0,
+                "ingredients": [
+                    "calamar saltejats",
+                    "clo\u00efsses"
+                ],
+                "allergens": []
+            },
+            {
+                "name": "De verdures de temporada (V)",
+                "price": 20.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Caldo\u0301s de llam\u00e1ntol",
+                "price": 38.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Trio d\u2019arrossos: Marinero / Verdure / Negre (Per 3/4 persones)",
+                "price": 72.0,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "FIDEU\u00c0S",
+        "items": [
+            {
+                "name": "De cabell d\u2019\u00e0ngel amb allioli",
+                "price": 20.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Marinera",
+                "price": 27.0,
+                "ingredients": [
+                    "de mariso",
+                    "s\u00edpia",
+                    "calamar",
+                    "clo\u00efsses"
+                ],
+                "allergens": []
+            },
+            {
+                "name": "Fideus negres amb tinta de s\u00edpia i clo\u00efsses",
+                "price": 26.0,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "PEIX I MARISC DE SEMPRE",
+        "items": [
+            {
+                "name": "Tronco de llu\u00e7 al gust",
+                "price": 22.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Llobarro a la Donosti (600/800g) amb patata gratinada amb allioli",
+                "price": 37.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Rap \u201cPinxo\u201d, amb fideu en salsas marinera i gratinat amb allioli suau",
+                "price": 35.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Escamarlans \u201cPinxo\u201d: al forn amb oli, llimona, all i julivert",
+                "price": 0.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Graellada de peix i marisc",
+                "price": 46.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Pesca i mariscos del dia",
+                "price": 0.0,
+                "ingredients": [
+                    "Llenguado",
+                    "Llobarro",
+                    "Turbot",
+                    "Gall de Sant Pere",
+                    "Gamba de la costa",
+                    "Escamarlans de platja"
+                ],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "CARNS",
+        "items": [
+            {
+                "name": "Carpaccio de vedella",
+                "price": 18.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Entrecot de vedella, de Girona amb guarnici\u00f3",
+                "price": 29.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Filet de vedella de Girona a la planxa o al pebre verd",
+                "price": 35.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Chulet\u00f3n de vaca vella madurada de pastura (450g)",
+                "price": 55.0,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "Acompanyaments",
+        "items": [
+            {
+                "name": "Arr\u00f2s blanc",
+                "price": 7.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Patates fregides",
+                "price": 7.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Amanida verda",
+                "price": 7.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Verdures a la planxa",
+                "price": 7.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Pebrots de Padr\u00f3n",
+                "price": 7.0,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    }
+]
