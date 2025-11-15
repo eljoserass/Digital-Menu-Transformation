@@ -19,8 +19,7 @@ import base64
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
-api_key = "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"
-
+api_key = ""
 
 client_openai = OpenAI(api_key=api_key)
 
