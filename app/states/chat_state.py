@@ -17,6 +17,7 @@ MOCK_RESPONSE = [
     "It contains gluten, dairy, and eggs. ",
     "Would you like to know more about another dish?",
 ]
+from app.states.menu_state import MenuState
 
 
 class ChatState(rx.State):
@@ -34,8 +35,11 @@ class ChatState(rx.State):
     async def stream_response(self):
         """Streams the mock response to the user."""
         async with self:
+            menu_state = await self.get_state(MenuState)
             self.is_streaming = True
-            self._add_message("", "assistant")
+            self._add_message(
+                f"(Querying menu: {menu_state.current_menu_id})\n\n", "assistant"
+            )
         for chunk in MOCK_RESPONSE:
             await asyncio.sleep(0.1)
             async with self:
