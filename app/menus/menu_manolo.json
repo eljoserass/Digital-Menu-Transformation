@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Appetizers",
+    "items": [
+      {
+        "name": "Classic Bruschetta",
+        "price": 8.99,
+        "ingredients": ["Toasted Bread", "Tomatoes", "Garlic"],
+        "allergens": ["Gluten"]
+      }
+    ]
+  },
+  {
+    "title": "Main Courses",
+    "items": [
+      {
+        "name": "Grilled Salmon",
+        "price": 22.00,
+        "ingredients": ["Salmon Fillet", "Asparagus"],
+        "allergens": []
+      }
+    ]
+  }
+]

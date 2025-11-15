@@ -1,0 +1,220 @@
+[
+  {
+    "title": "ENTRANTES FR\u00cdOS",
+    "items": [
+      {
+        "name": "Ensalada de aguacate con gambas, naranja y vinagreta de mostaza",
+        "price": 19.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Amanida d\u2019alvocat amb gambes, taronja",
+        "price": 19.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Ensalada de pulpo y patata al salsa romesco",
+        "price": 21.5,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Amanida de pop i patata amb salsa romesco",
+        "price": 21.5,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Amanida variada",
+        "price": 12.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Jamon de Bellota reserva 'Don Alfonso'",
+        "price": 26.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Rile de gelat de reserva \u201cDon Alfonso\u201d",
+        "price": 26.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Anchos de Sanl\u00facar con timbal de tomate y olivas",
+        "price": 19.8,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Carpaccio de solomillo servido de parmesano",
+        "price": 16.0,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Carpaccio de at\u00fan",
+        "price": 19.5,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Tartar de dos salmones con vinagreta de mostaza y miel con aire de lim\u00f3n",
+        "price": 19.5,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "T\u00e1tar de at\u00fan con mango, verduras y salsa de soja",
+        "price": 19.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Burrata con r\u00facula, tomate confitado y pesto rojo",
+        "price": 18.5,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Ostra Gillardeau n\u00ba 2 (1 unidad)",
+        "price": 6.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Ostra Gillardeau n\u00ba 2 (2 unitats)",
+        "price": 6.9,
+        "ingredients": [],
+        "allergens": []
+      }
+    ]
+  },
+  {
+    "title": "ENTRANTES CALIENTES",
+    "items": [
+      {
+        "name": "Espaguetis a la marinera",
+        "price": 23.8,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Navales a la plancha",
+        "price": 21.5,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Mejillones al vapor o a la marinera",
+        "price": 15.8,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Parrillada de verduras de temporada",
+        "price": 16.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Pulpo a la gallega",
+        "price": 20.8,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Gambas al ajillo",
+        "price": 21.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Almejas gallegas al vino blanco con virtudes",
+        "price": 29.7,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Cocidos gallegos al vino blanco amb encenalls",
+        "price": 29.7,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Zamburi\u00f1a al horno (1 unidad)",
+        "price": 5.9,
+        "ingredients": [],
+        "allergens": []
+      }
+    ]
+  },
+  {
+    "title": "SOPAS Y CREMAS",
+    "items": [
+      {
+        "name": "Sopa de pescado y marisco",
+        "price": 16.8,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Crema de calabaza con polvo de jam\u00f3n ib\u00e9rico",
+        "price": 17.9,
+        "ingredients": [],
+        "allergens": []
+      }
+    ]
+  },
+  {
+    "title": "FRITOS",
+    "items": [
+      {
+        "name": "Pimientos de Padr\u00f3n",
+        "price": 12.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Calamares a la romana",
+        "price": 17.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Chiperones de playa fritos",
+        "price": 23.5,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Boquerones fritos",
+        "price": 16.5,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Gambas rebozadas en tempura",
+        "price": 21.9,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Croquetas de pescado y marisco",
+        "price": 19.4,
+        "ingredients": [],
+        "allergens": []
+      },
+      {
+        "name": "Croquetas de jam\u00f3n de Bellota",
+        "price": 16.5,
+        "ingredients": [],
+        "allergens": []
+      }
+    ]
+  }
+]
