@@ -91,35 +91,6 @@ class CallState(rx.State):
             yield
 
     @rx.event
-    async def process_base64_audio(self, audio_data: str):
-        """Processes the base64 encoded audio data from the frontend."""
-        if not audio_data:
-            self.error_message = "Audio recording failed. Please try again."
-            self.is_processing = False
-            return
-        try:
-            header, encoded = audio_data.split(",", 1)
-            upload_data = base64.b64decode(encoded)
-            upload_dir = rx.get_upload_dir()
-            upload_dir.mkdir(parents=True, exist_ok=True)
-            unique_filename = f"{uuid.uuid4()}_recording.webm"
-            file_path = upload_dir / unique_filename
-            with file_path.open("wb") as f:
-                f.write(upload_data)
-            self.uploaded_audio_path = str(file_path)
-            response_filename = await self._generate_audio_response()
-            if response_filename:
-                self.audio_response_src = response_filename
-            else:
-                self.error_message = "Could not generate audio response."
-        except Exception as e:
-            logging.exception(f"Audio processing failed: {e}")
-            self.error_message = "An unexpected error occurred during processing."
-        finally:
-            self.is_processing = False
-            yield
-
-    @rx.event
     def reset_state(self):
         """Resets the call page to its initial state."""
         self.is_recording = False
