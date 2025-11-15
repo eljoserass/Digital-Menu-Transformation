@@ -18,8 +18,6 @@ def encode_image(image_path):
         return base64.b64encode(image_file.read()).decode("utf-8")
 
 
-
-
 class MenuItem(BaseModel):
     name: str
     price: float
@@ -61,7 +59,6 @@ class UploadState(rx.State):
 
         """
         client_openai = OpenAI()
-
         encoded_image = encode_image(file_path)
         response = client_openai.responses.parse(
             model="gpt-4.1-2025-04-14",
@@ -82,7 +79,7 @@ class UploadState(rx.State):
         )
         event = response.output_parsed.dict()
         return event
-        
+
     @rx.event
     def reset_state(self):
         """Resets the upload page to its initial state."""
@@ -122,7 +119,7 @@ class UploadState(rx.State):
             menu_file_path = menu_dir / f"{menu_id}.json"
             with menu_file_path.open("w") as f:
                 json.dump(processed_data["sections"], f, indent=4)
-            self.menu_url = f"{self.router.page.host_url}/menu/{menu_id}"
+            self.menu_url = f"{self.router.page.host}/menu/{menu_id}"
             qr_img = qrcode.make(self.menu_url)
             buffer = BytesIO()
             qr_img.save(buffer, format="PNG")
