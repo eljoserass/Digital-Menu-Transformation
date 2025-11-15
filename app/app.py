@@ -15,7 +15,7 @@ def index() -> rx.Component:
 
 def _logo() -> rx.Component:
     """The logo component for the header."""
-    return rx.image(src="/damm_logo_beer.png", class_name="h-8")
+    return rx.image(src="/Damm_logo.png", class_name="h-8")
 
 
 def _tab_button(

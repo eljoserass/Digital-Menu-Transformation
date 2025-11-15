@@ -1,0 +1,396 @@
+[
+    {
+        "title": "Entrantes fr\u00edos",
+        "items": [
+            {
+                "name": "Ensalada de burrata",
+                "price": 19.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Esqueixada de bacalao",
+                "price": 10.45,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Ensalada de verdes con parmesano",
+                "price": 13.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Ensalada de espinacas con virutas de jam\u00f3n",
+                "price": 14.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Tomate, bonito del norte y cebolla tierna",
+                "price": 16.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Sardinas en escabeche",
+                "price": 11.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Jam\u00f3n de bellota Gran Reserva",
+                "price": 23.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Carpaccio de buey",
+                "price": 19.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Carpaccio de at\u00fan blue finn",
+                "price": 19.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Tartar de salm\u00f3n",
+                "price": 19.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Anchoa del Cant\u00e1brico",
+                "price": 8.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Esp\u00e1rragos blancos \u201cPremium\u201d de Navarra",
+                "price": 17.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Ceviche de vieiras",
+                "price": 19.5,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "Entrantes Calientes",
+        "items": [
+            {
+                "name": "Croquetas de gambas",
+                "price": 3.8,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Bu\u00f1uelos de bacalao",
+                "price": 3.8,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Langostinos en tempura",
+                "price": 13.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Calamares a la Romana",
+                "price": 16.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Patas de calamar a la Andaluza",
+                "price": 10.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Salteado de cigalitas de playa",
+                "price": 20.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Pescadito frito - Gambita de Cristal",
+                "price": 17.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Pulpo a la Gallega",
+                "price": 22.85,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Txangurro",
+                "price": 28.5,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "Moluscos",
+        "items": [
+            {
+                "name": "Tallarinas",
+                "price": 26.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Ostra Especial",
+                "price": 5.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Mejillones al vapor o a la marinera",
+                "price": 12.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Almejas Gallegas a la marinera",
+                "price": 17.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Berberechos Gallegos a la plancha o al vapor",
+                "price": 16.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Navajas a la plancha",
+                "price": 21.5,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "Sopas",
+        "items": [
+            {
+                "name": "Sopa de calabaza",
+                "price": 14.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Gazpacho tradicional",
+                "price": 10.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Bullabesa",
+                "price": 17.5,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "Arroces y Pastas",
+        "items": [
+            {
+                "name": "Fideu\u00e1",
+                "price": 17.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Arroz negro",
+                "price": 17.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Paella de arroz \u201cpelado\u201d con pescado y marisco",
+                "price": 24.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Paella de fideos con pescado y marisco",
+                "price": 24.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Fideos negros con almejas",
+                "price": 26.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Arroz con verduras",
+                "price": 24.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "La paella del \u201cnen\u201d",
+                "price": 26.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Arroz de sepietas con alcachofas",
+                "price": 26.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Arroz con bogavante",
+                "price": 36.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Fideu\u00e1 con bogavante",
+                "price": 36.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Arroz de rabo de buey",
+                "price": 26.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Arroz de bacalao con verduras",
+                "price": 24.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Pasta fresca rellena de queso y nueces con gambas",
+                "price": 24.5,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "Pescados y Mariscos",
+        "items": [
+            {
+                "name": "Rape Mari con fideu\u00e1",
+                "price": 33.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Zarzuela",
+                "price": 37.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Suprema de lubina Donostiarra / Horno / Plancha",
+                "price": 29.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Rape al horno",
+                "price": 35.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Bacalao con sanfaina",
+                "price": 24.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Tronco de merluza Donostiarra / Horno / Plancha / Vasca",
+                "price": 29.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Lenguado a la naranja",
+                "price": 29.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Gambas de la costa Catalana (250 gr.)",
+                "price": 49.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Cigalas a la plancha o al horno (350 gr.)",
+                "price": 59.5,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "Carnes",
+        "items": [
+            {
+                "name": "Entrecot de ternera a la plancha",
+                "price": 26.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Frincand\u00f3 con moixernons",
+                "price": 19.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Macarrones de la Mari (Martes a viernes)",
+                "price": 14.5,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Chop-Chup de alb\u00f3ndigas (Martes a viernes)",
+                "price": 17.0,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "Para Ni\u00f1os",
+        "items": [
+            {
+                "name": "Pechuga de pollo a la Milanesa",
+                "price": 17.0,
+                "ingredients": [],
+                "allergens": []
+            },
+            {
+                "name": "Nuggets de rape",
+                "price": 21.5,
+                "ingredients": [],
+                "allergens": []
+            }
+        ]
+    }
+]
