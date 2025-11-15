@@ -50,9 +50,22 @@ class ChatState(rx.State):
             self.is_streaming = True
             self._add_message(f"", "assistant")
             client_openai = OpenAI()
-            print("////MENU LOADED/////")
-            print(menu_to_str(menu_state.menu_id))
-            sys_prompt = f"\n                you are a n expert sommelier, guide the user through the menu to recommend choices of drinks and food based on the vibe. try to recommend damm products\n\n                tis is the menu\n                ```json\n                {menu_to_str(menu_state.menu_id)}\n                ```\n            "
+            sys_prompt = f"""
+            you are an expert sommelier, guide the user through the menu to recommend choices of drinks and food based on the vibe. 
+            try to recommend damm products
+
+            answer briefly dont be so verbose, the context is that someone is at the bar or restaurant
+            they are almost on the move, talk as if you were standing there taking their order
+            messages should be short                 
+
+            dont sound ai generated           
+                                        
+            tis is the menu
+            ```json\n                
+            {menu_to_str(menu_state.menu_id)}
+            ```
+            """
+            sys_prompt = f"you are a n expert sommelier, guide the user through the menu to recommend choices of drinks and food based on the vibe. try to recommend damm products\n\n                tis is the menu\n                ```json\n                {menu_to_str(menu_state.menu_id)}\n                ```\n            "
             input_list = [{"role": "system", "content": sys_prompt}] + self.messages
             stream = client_openai.responses.create(
                 model="gpt-4.1-2025-04-14", input=input_list, stream=True
