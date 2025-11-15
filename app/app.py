@@ -3,6 +3,7 @@ from app.components.menu import menu_display
 from app.states.menu_state import MenuState, MenuPageState
 from app.components.upload import upload_page
 from app.components.chat import chat_interface
+from app.components.call import call_interface
 
 
 def index() -> rx.Component:
@@ -50,13 +51,24 @@ def menu_page() -> rx.Component:
                         MenuPageState.active_tab == "chat",
                         MenuPageState.set_active_tab("chat"),
                     ),
+                    _tab_button(
+                        "Call",
+                        MenuPageState.active_tab == "call",
+                        MenuPageState.set_active_tab("call"),
+                    ),
                     class_name="flex items-center gap-2 p-1 bg-gray-100 rounded-lg",
                 ),
                 class_name="flex items-center justify-between max-w-5xl mx-auto",
             ),
             class_name="bg-blue-600 shadow-md p-4 w-full",
         ),
-        rx.cond(MenuPageState.active_tab == "menu", menu_display(), chat_interface()),
+        rx.match(
+            MenuPageState.active_tab,
+            ("menu", menu_display()),
+            ("chat", chat_interface()),
+            ("call", call_interface()),
+            menu_display(),
+        ),
         class_name="font-['Roboto'] bg-gray-50 min-h-screen text-gray-700",
     )
 

@@ -94,7 +94,7 @@ class MenuState(rx.State):
 class MenuPageState(rx.State):
     """Manages the state for the menu page (e.g., active tab)."""
 
-    active_tab: Literal["menu", "chat"] = "menu"
+    active_tab: Literal["menu", "chat", "call"] = "menu"
 
     @rx.event
     def set_active_tab(self, tab_name: str):
