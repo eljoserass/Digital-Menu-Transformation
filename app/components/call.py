@@ -58,42 +58,40 @@ def _response_view() -> rx.Component:
 def call_interface() -> rx.Component:
     """The main interface for the call tab."""
     return rx.el.div(
-        rx.upload.root(
+        rx.cond(
+            CallState.audio_response_src != "",
+            _response_view(),
             rx.cond(
-                CallState.audio_response_src != "",
-                _response_view(),
-                rx.cond(
-                    CallState.is_processing,
-                    _processing_view(),
-                    rx.el.div(
-                        rx.el.h2(
-                            "Voice Assistant",
-                            class_name="text-3xl font-bold text-gray-100 mb-2",
-                        ),
-                        rx.el.p(
-                            "Ask me anything about the menu!",
-                            class_name="text-gray-400 mb-12",
-                        ),
-                        _record_button(),
-                        rx.cond(
-                            CallState.error_message != "",
-                            rx.el.div(
-                                rx.icon(
-                                    "flag_triangle_right", class_name="h-5 w-5 mr-2"
-                                ),
-                                CallState.error_message,
-                                class_name="flex items-center mt-6 text-sm text-red-500 bg-red-900 p-3 rounded-lg",
-                            ),
-                            None,
-                        ),
-                        class_name="text-center",
+                CallState.is_processing,
+                _processing_view(),
+                rx.el.div(
+                    rx.el.h2(
+                        "Voice Assistant",
+                        class_name="text-3xl font-bold text-gray-100 mb-2",
                     ),
+                    rx.el.p(
+                        "Ask me anything about the menu!",
+                        class_name="text-gray-400 mb-12",
+                    ),
+                    _record_button(),
+                    rx.cond(
+                        CallState.error_message != "",
+                        rx.el.div(
+                            rx.icon("flag_triangle_right", class_name="h-5 w-5 mr-2"),
+                            CallState.error_message,
+                            class_name="flex items-center mt-6 text-sm text-red-500 bg-red-900 p-3 rounded-lg",
+                        ),
+                        None,
+                    ),
+                    class_name="text-center",
                 ),
             ),
+        ),
+        rx.upload.root(
             id=CALL_UPLOAD_ID,
             accept={"audio/webm": [".webm"]},
             on_drop=CallState.handle_audio_upload,
-            class_name="w-full h-full",
+            class_name="hidden",
         ),
         rx.script(
             """
