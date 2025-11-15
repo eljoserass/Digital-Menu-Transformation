@@ -50,7 +50,7 @@ def chat_interface() -> rx.Component:
                 reset_on_submit=True,
                 width="100%",
             ),
-            class_name="p-4 bg-gray-900 border-t border-gray-700",
+            class_name="p-4 bg-gray-900 md:border-t md:border-gray-700",
         ),
-        class_name="flex flex-col h-[80vh] w-full max-w-3xl mx-auto bg-gray-900 rounded-lg shadow-lg border border-gray-700 mt-8",
+        class_name="flex flex-col h-[calc(100vh-4.5rem)] w-full md:max-w-3xl md:mx-auto bg-gray-900 md:rounded-lg shadow-lg md:border md:border-gray-700 md:mt-8",
     )
