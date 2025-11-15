@@ -95,47 +95,7 @@ def call_interface() -> rx.Component:
             on_drop=CallState.handle_audio_upload,
         ),
         rx.script(
-            """
-let mediaRecorder;
-let audioChunks = [];
-
-async function startAudioRecording() {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRecorder = new MediaRecorder(stream);
-        mediaRecorder.ondataavailable = event => {
-            audioChunks.push(event.data);
-        };
-        mediaRecorder.onstop = async () => {
-            const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-            const audioFile = new File([audioBlob], "recording.webm", { type: 'audio/webm' });
-
-            // Create a DataTransfer to use with the upload function
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(audioFile);
-
-            // Get the upload function and trigger the upload
-            const upload_fn = window.upload_files['%s'];
-            if (upload_fn) {
-                await upload_fn(dataTransfer.files);
-            } else {
-                console.error('Upload function not found for ID: %s');
-            }
-            audioChunks = [];
-        };
-        mediaRecorder.start();
-    } catch (error) {
-        console.error('Error accessing microphone:', error);
-    }
-}
-
-function stopAudioRecording() {
-    if (mediaRecorder && mediaRecorder.state === 'recording') {
-        mediaRecorder.stop();
-    }
-}
-"""
-            % (CALL_UPLOAD_ID, CALL_UPLOAD_ID)
+            f"\nlet mediaRecorder;\nlet audioChunks = [];\n\nasync function startAudioRecording() {{\n    try {{\n        const stream = await navigator.mediaDevices.getUserMedia({{ audio: true }});\n        mediaRecorder = new MediaRecorder(stream, {{ mimeType: 'audio/webm' }});\n        mediaRecorder.ondataavailable = event => {{\n            audioChunks.push(event.data);\n        }};\n        mediaRecorder.onstop = async () => {{\n            const audioBlob = new Blob(audioChunks, {{ type: 'audio/webm' }});\n            const reader = new FileReader();\n            reader.readAsDataURL(audioBlob);\n            reader.onloadend = function() {{\n                const base64data = reader.result;\n                _reflex_internal_process_base64_audio(base64data);\n            }}\n            audioChunks = [];\n        }};\n        mediaRecorder.start();\n    }} catch (error) {{\n        console.error('Error accessing microphone:', error);\n    }}\n}}\n\nfunction stopAudioRecording() {{\n    if (mediaRecorder && mediaRecorder.state === 'recording') {{\n        mediaRecorder.stop();\n    }}\n}}\n"
         ),
         class_name="flex items-center justify-center h-[calc(100vh-8.5rem)] w-full max-w-3xl mx-auto",
     )
