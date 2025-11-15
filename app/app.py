@@ -13,6 +13,11 @@ def index() -> rx.Component:
     )
 
 
+def _logo() -> rx.Component:
+    """The logo component for the header."""
+    return rx.image(src="/damm_logo_beer.png", class_name="h-8")
+
+
 def _tab_button(
     text: str, is_active: rx.Var[bool], on_click: rx.event.Event
 ) -> rx.Component:
@@ -33,10 +38,7 @@ def menu_page() -> rx.Component:
     return rx.el.main(
         rx.el.header(
             rx.el.div(
-                rx.el.div(
-                    rx.icon("beer", class_name="h-6 w-6 text-yellow-400"),
-                    class_name="w-10",
-                ),
+                rx.el.div(_logo(), class_name="w-24 flex items-center"),
                 rx.el.div(
                     _tab_button(
                         "Menu",

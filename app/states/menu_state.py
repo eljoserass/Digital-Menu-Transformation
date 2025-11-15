@@ -19,47 +19,123 @@ class MenuSection(TypedDict):
 
 SAMPLE_MENU_DATA = [
     {
-        "title": "Appetizers",
+        "title": "Tapas",
         "items": [
             {
-                "name": "Classic Bruschetta",
-                "price": 8.99,
-                "ingredients": [
-                    "Toasted Bread",
-                    "Tomatoes",
-                    "Garlic",
-                    "Basil",
-                    "Olive Oil",
-                ],
+                "name": "Patatas Bravas",
+                "price": 6.5,
+                "ingredients": ["Patatas", "Salsa brava", "Aceite de oliva"],
+                "allergens": [],
+            },
+            {
+                "name": "Jamón Ibérico de Bellota",
+                "price": 24.0,
+                "ingredients": ["Jamón ibérico de bellota", "Picos de pan"],
                 "allergens": ["Gluten"],
             },
             {
-                "name": "Spinach Artichoke Dip",
-                "price": 10.5,
-                "ingredients": [
-                    "Spinach",
-                    "Artichoke Hearts",
-                    "Cream Cheese",
-                    "Parmesan",
-                ],
-                "allergens": ["Dairy"],
+                "name": "Croquetas de Jamón",
+                "price": 8.0,
+                "ingredients": ["Jamón", "Bechamel", "Pan rallado"],
+                "allergens": ["Gluten", "Lácteos"],
+            },
+            {
+                "name": "Pan con Tomate",
+                "price": 4.5,
+                "ingredients": ["Pan de coca", "Tomate", "Aceite de oliva", "Sal"],
+                "allergens": ["Gluten"],
+            },
+            {
+                "name": "Aceitunas Aliñadas",
+                "price": 3.5,
+                "ingredients": ["Aceitunas verdes", "Ajo", "Tomillo", "Naranja"],
+                "allergens": [],
             },
         ],
     },
     {
-        "title": "Main Courses",
+        "title": "Platos Principales",
         "items": [
             {
-                "name": "Grilled Salmon",
-                "price": 22.0,
-                "ingredients": ["Salmon Fillet", "Asparagus", "Lemon", "Herbs"],
+                "name": "Paella Valenciana",
+                "price": 18.5,
+                "ingredients": [
+                    "Arroz bomba",
+                    "Pollo",
+                    "Conejo",
+                    "Judía verde",
+                    "Garrofó",
+                    "Azafrán",
+                ],
                 "allergens": [],
             },
             {
-                "name": "Spaghetti Carbonara",
-                "price": 16.0,
-                "ingredients": ["Spaghetti", "Pancetta", "Egg Yolk", "Pecorino Cheese"],
-                "allergens": ["Gluten", "Egg", "Dairy"],
+                "name": "Pulpo a la Gallega",
+                "price": 21.0,
+                "ingredients": [
+                    "Pulpo",
+                    "Patatas",
+                    "Pimentón de la Vera",
+                    "Aceite de oliva virgen extra",
+                ],
+                "allergens": ["Moluscos"],
+            },
+            {
+                "name": "Cordero Asado con Patatas a lo Pobre",
+                "price": 25.0,
+                "ingredients": [
+                    "Paletilla de cordero",
+                    "Patatas",
+                    "Pimientos",
+                    "Cebolla",
+                ],
+                "allergens": [],
+            },
+        ],
+    },
+    {
+        "title": "Postres",
+        "items": [
+            {
+                "name": "Tarta de Santiago",
+                "price": 7.0,
+                "ingredients": ["Almendras", "Azúcar", "Huevo", "Limón"],
+                "allergens": ["Frutos de cáscara", "Huevo"],
+            },
+            {
+                "name": "Crema Catalana",
+                "price": 6.5,
+                "ingredients": ["Leche", "Yema de huevo", "Azúcar", "Canela", "Limón"],
+                "allergens": ["Lácteos", "Huevo"],
+            },
+            {
+                "name": "Flan de Huevo Casero",
+                "price": 5.5,
+                "ingredients": ["Huevo", "Leche", "Azúcar", "Caramelo"],
+                "allergens": ["Huevo", "Lácteos"],
+            },
+        ],
+    },
+    {
+        "title": "Bebidas",
+        "items": [
+            {
+                "name": "Estrella Damm",
+                "price": 3.5,
+                "ingredients": ["Agua", "Malta de cebada", "Arroz", "Lúpulo"],
+                "allergens": ["Gluten"],
+            },
+            {
+                "name": "Copa de Sangría",
+                "price": 5.0,
+                "ingredients": ["Vino tinto", "Frutas de temporada", "Azúcar", "Licor"],
+                "allergens": ["Sulfitos"],
+            },
+            {
+                "name": "Agua Mineral (50cl)",
+                "price": 2.5,
+                "ingredients": ["Agua mineral natural"],
+                "allergens": [],
             },
         ],
     },
