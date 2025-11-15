@@ -7,9 +7,9 @@ from app.components.call import call_interface
 
 
 def index() -> rx.Component:
-    """The index page, which redirects to the sample menu."""
+    """The index page, which redirects to the upload page."""
     return rx.center(
-        rx.el.p("Redirecting to sample menu..."), on_mount=rx.redirect("/menu/sample")
+        rx.el.p("Redirecting to upload page..."), on_mount=rx.redirect("/upload")
     )
 
 
@@ -33,7 +33,10 @@ def menu_page() -> rx.Component:
     return rx.el.main(
         rx.el.header(
             rx.el.div(
-                rx.el.div(class_name="w-10"),
+                rx.el.div(
+                    rx.icon("beer", class_name="h-6 w-6 text-yellow-400"),
+                    class_name="w-10",
+                ),
                 rx.el.div(
                     _tab_button(
                         "Menu",

@@ -130,10 +130,12 @@ class UploadState(rx.State):
                 f.write(qr_code_data)
             self.processing = False
             self.qr_code_src = qr_filename
-            yield
         except Exception as e:
             logging.exception(f"Upload failed: {e}")
             self.error_message = "An unexpected error occurred during upload."
+            self.uploading = False
+            self.processing = False
+        finally:
             self.uploading = False
             self.processing = False
             yield
