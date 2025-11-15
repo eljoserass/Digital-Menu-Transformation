@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Appetizers",
+        "items": [
+            {
+                "name": "AI-Generated Bruschetta",
+                "price": 8.99,
+                "ingredients": [
+                    "Tomato",
+                    "Garlic",
+                    "Basil",
+                    "Olive Oil"
+                ],
+                "allergens": [
+                    "Gluten"
+                ]
+            },
+            {
+                "name": "Robo-Wings",
+                "price": 12.5,
+                "ingredients": [
+                    "Chicken Wings",
+                    "Spicy Sauce",
+                    "Celery"
+                ],
+                "allergens": []
+            }
+        ]
+    },
+    {
+        "title": "Main Courses",
+        "items": [
+            {
+                "name": "Coded Carbonara",
+                "price": 16.0,
+                "ingredients": [
+                    "Pasta",
+                    "Egg",
+                    "Cheese",
+                    "Bacon"
+                ],
+                "allergens": [
+                    "Gluten",
+                    "Dairy",
+                    "Egg"
+                ]
+            }
+        ]
+    }
+]
