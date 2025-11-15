@@ -119,7 +119,9 @@ class UploadState(rx.State):
             menu_file_path = menu_dir / f"{menu_id}.json"
             with menu_file_path.open("w") as f:
                 json.dump(processed_data["sections"], f, indent=4)
-            self.menu_url = f"{self.router.page.host}/menu/{menu_id}"
+            self.menu_url = (
+                f"{self.router.url.scheme}://{self.router.url.netloc}/menu/{menu_id}"
+            )
             qr_img = qrcode.make(self.menu_url)
             buffer = BytesIO()
             qr_img.save(buffer, format="PNG")

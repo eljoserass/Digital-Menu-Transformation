@@ -55,7 +55,7 @@ class CallState(rx.State):
         self.audio_response_src = ""
         return [
             rx.call_script("stopAudioRecording()"),
-            CallState.handle_audio_upload(rx.upload_files(upload_id=CALL_UPLOAD_ID)),
+            CallState.handle_audio_upload(rx.upload_files()),
         ]
 
     @rx.event
