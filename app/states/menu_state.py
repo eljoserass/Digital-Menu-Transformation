@@ -150,9 +150,8 @@ class MenuState(rx.State):
     current_menu_id: str = ""
 
     @rx.event
-    def load_menu(self):
-        """Load menu data from a JSON file based on the menu_id in the URL."""
-        menu_id = self.router.page.params.get("menu_id", "sample")
+    def load_menu(self, menu_id: str):
+        """Load menu data from a JSON file based on the menu_id from the URL."""
         self.current_menu_id = menu_id
         if menu_id == "sample":
             self.menu_data = SAMPLE_MENU_DATA
