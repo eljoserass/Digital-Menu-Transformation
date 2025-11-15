@@ -53,10 +53,7 @@ class CallState(rx.State):
         self.is_processing = True
         self.error_message = ""
         self.audio_response_src = ""
-        return [
-            rx.call_script("stopAudioRecording()"),
-            CallState.handle_audio_upload(rx.upload_files()),
-        ]
+        return rx.call_script("stopAudioRecording()")
 
     @rx.event
     async def handle_audio_upload(self, files: list[rx.UploadFile]):

@@ -88,7 +88,11 @@ def call_interface() -> rx.Component:
             ),
         ),
         rx.upload.root(
-            id=CALL_UPLOAD_ID, accept={"audio/webm": [".webm"]}, class_name="hidden"
+            rx.fragment(),
+            id=CALL_UPLOAD_ID,
+            accept={"audio/webm": [".webm"]},
+            class_name="hidden",
+            on_drop=CallState.handle_audio_upload,
         ),
         rx.script(
             """
