@@ -85,11 +85,5 @@ app = rx.App(
     ],
 )
 app.add_page(index, route="/")
-app.add_page(
-    menu_page,
-    route="/menu/[menu_id]",
-    on_load=lambda: MenuState.load_menu(
-        MenuState.router.page.params.get("menu_id", "")
-    ),
-)
+app.add_page(menu_page, route="/menu/[menu_id]", on_load=MenuState.load_menu)
 app.add_page(upload_page, route="/upload")
