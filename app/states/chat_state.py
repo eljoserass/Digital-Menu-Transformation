@@ -17,7 +17,19 @@ MOCK_RESPONSE = [
     "It contains gluten, dairy, and eggs. ",
     "Would you like to know more about another dish?",
 ]
+from app.states.menu_state import MenuState
 
+
+from openai import OpenAI
+
+from pathlib import Path
+def menu_to_str(menu_id: str) -> str:
+    menu_path = Path("menus") / f"{menu_id}.json"
+    print ("MENU PATH = ", menu_path)
+    if menu_path.exists():
+        with open(menu_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return ""
 
 class ChatState(rx.State):
     """Manages the state for the chat interface."""
@@ -34,15 +46,45 @@ class ChatState(rx.State):
     async def stream_response(self):
         """Streams the mock response to the user."""
         async with self:
+            menu_state = await self.get_state(MenuState)
             self.is_streaming = True
-            self._add_message("", "assistant")
-        for chunk in MOCK_RESPONSE:
-            await asyncio.sleep(0.1)
-            async with self:
-                self.messages[-1]["content"] += chunk
-            yield
+            # TODO handle the little empty message
+            self._add_message(
+                f"", "assistant"
+            )
+            api_key = "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"
+            client_openai = OpenAI(api_key=api_key)
+
+            print ("////MENU LOADED/////")
+            print (menu_to_str(menu_state.menu_id))
+            sys_prompt = f"""
+                you are a n expert sommelier, guide the user through the menu to recommend choices of drinks and food based on the vibe. try to recommend damm products
+
+                tis is the menu
+                ```json
+                {menu_to_str(menu_state.menu_id)}
+                ```
+            """
+            input_list = [{
+                        "role": "system",
+                        "content":  sys_prompt
+                    }] + self.messages
+            stream = client_openai.responses.create(
+                model="gpt-4.1-2025-04-14",
+                input=input_list,
+                stream=True,
+            )
+
+
+        for event in stream:
+
+            if event.__class__.__name__ == "ResponseTextDeltaEvent":
+                async with self:
+                    self.messages[-1]["content"] += event.delta
+                yield
         async with self:
             self.is_streaming = False
+
 
     @rx.event
     def handle_send(self, form_data: dict[str, str]):

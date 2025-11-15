@@ -71,11 +71,13 @@ class MenuState(rx.State):
 
     menu_data: list[MenuSection] = []
     menu_found: bool = True
+    current_menu_id: str = ""
 
     @rx.event
     def load_menu(self):
         """Load menu data from a JSON file based on the menu_id in the URL."""
         menu_id = self.router.page.params.get("menu_id", "sample")
+        self.current_menu_id = menu_id
         if menu_id == "sample":
             self.menu_data = SAMPLE_MENU_DATA
             self.menu_found = True

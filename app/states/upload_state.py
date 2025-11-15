@@ -6,29 +6,24 @@ from pathlib import Path
 import logging
 import qrcode
 from io import BytesIO
-
-
 from openai import OpenAI
-
 from pydantic import BaseModel
 
 UPLOAD_ID = "menu_upload"
-
-
 import base64
+
+
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
-api_key = "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"
 
-client_openai = OpenAI(api_key=api_key)
 
 
 
 class MenuItem(BaseModel):
-    name:str 
-    price:float
-    ingredients:list[str]
+    name: str
+    price: float
+    ingredients: list[str]
     allergens: list[str]
 
 
@@ -39,10 +34,6 @@ class MenuSection(BaseModel):
 
 class Menu(BaseModel):
     sections: list[MenuSection]
-
-
-
-
 
 
 class UploadState(rx.State):
@@ -56,8 +47,6 @@ class UploadState(rx.State):
 
     async def _mock_llm_process(self, file_path: str) -> dict:
         """A mock function to simulate LLM processing of a menu image."""
-
-
         prompt = """
 
         parse the pictures of the menu by splitting it into Sections with its name
@@ -71,64 +60,30 @@ class UploadState(rx.State):
 
 
         """
+        api_key = "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"
+        client_openai = OpenAI(api_key=api_key)
 
         encoded_image = encode_image(file_path)
-        
         response = client_openai.responses.parse(
-            model="gpt-4o-mini",
+            model="gpt-4.1-2025-04-14",
             input=[
                 {"role": "system", "content": prompt},
                 {
                     "role": "user",
                     "content": [
-                        { "type": "input_text", "text": "parse the menu" },
-                            {
-                                "type": "input_image",
-                                "image_url": f"data:image/jpeg;base64,{encoded_image}",
-                            }
+                        {"type": "input_text", "text": "parse the menu"},
+                        {
+                            "type": "input_image",
+                            "image_url": f"data:image/jpeg;base64,{encoded_image}",
+                        },
                     ],
                 },
             ],
             text_format=Menu,
         )
         event = response.output_parsed.dict()
-
         return event
-
-        await asyncio.sleep(2)
-        return {
-            "sections": [
-                {
-                    "title": "Appetizers",
-                    "items": [
-                        {
-                            "name": "AI-Generated Bruschetta",
-                            "price": 8.99,
-                            "ingredients": ["Tomato", "Garlic", "Basil", "Olive Oil"],
-                            "allergens": ["Gluten"],
-                        },
-                        {
-                            "name": "Robo-Wings",
-                            "price": 12.5,
-                            "ingredients": ["Chicken Wings", "Spicy Sauce", "Celery"],
-                            "allergens": [],
-                        },
-                    ],
-                },
-                {
-                    "title": "Main Courses",
-                    "items": [
-                        {
-                            "name": "Coded Carbonara",
-                            "price": 16.0,
-                            "ingredients": ["Pasta", "Egg", "Cheese", "Bacon"],
-                            "allergens": ["Gluten", "Dairy", "Egg"],
-                        }
-                    ],
-                },
-            ]
-        }
-
+        
     @rx.event
     def reset_state(self):
         """Resets the upload page to its initial state."""
@@ -168,7 +123,6 @@ class UploadState(rx.State):
             menu_file_path = menu_dir / f"{menu_id}.json"
             with menu_file_path.open("w") as f:
                 json.dump(processed_data["sections"], f, indent=4)
-            # self.menu_url = f"http://localhost:3000/menu/{menu_id}"
             self.menu_url = f"{self.router.page.host_url}/menu/{menu_id}"
             qr_img = qrcode.make(self.menu_url)
             buffer = BytesIO()

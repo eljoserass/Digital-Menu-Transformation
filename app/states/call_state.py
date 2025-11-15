@@ -25,7 +25,7 @@ class CallState(rx.State):
         for section in menu_state.menu_data:
             for item in section["items"]:
                 menu_items.append(item["name"])
-        response_text = f"Hello! Welcome to our restaurant. Today we have {', '.join(menu_items[:3])} on the menu. Is there anything I can help you with?"
+        response_text = f"Hello! Welcome to the restaurant for menu {menu_state.current_menu_id}. Today we have {', '.join(menu_items[:3])} on the menu. Is there anything I can help you with?"
         try:
             client = ElevenLabs(api_key=os.getenv("ELEVEN_LABS_API_KEY"))
             audio_generator = client.text_to_speech.convert(
