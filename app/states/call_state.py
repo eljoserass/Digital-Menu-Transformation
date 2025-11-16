@@ -39,19 +39,18 @@ class CallState(rx.State):
         transcription = client.audio.transcriptions.create(
             model="gpt-4o-transcribe", file=audio_file
         )
-        async with self:
-            menu_state = await self.get_state(MenuState)
-            stream = client.responses.create(
-                model="gpt-4.1-mini-2025-04-14",
-                input=[
-                    {
-                        "role": "system",
-                        "content": "answer questions from the user about the menu, recommend it stuff. you will be the sommelier of it at a bar "
-                        + menu_to_str(menu_state.id),
-                    },
-                    {"role": "user", "content": transcription.text},
-                ],
-            )
+        menu_state = await self.get_state(MenuState)
+        stream = client.responses.create(
+            model="gpt-4.1-mini-2025-04-14",
+            input=[
+                {
+                    "role": "system",
+                    "content": "answer questions from the user about the menu, recommend it stuff. you will be the sommelier of it at a bar "
+                    + menu_to_str(menu_state.current_menu_id),
+                },
+                {"role": "user", "content": transcription.text},
+            ],
+        )
         elevenlabs = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
         audio = elevenlabs.text_to_speech.convert(
             text=stream.output_text,
@@ -99,6 +98,10 @@ class CallState(rx.State):
             self.error_message = "Audio recording failed. Please try again."
             self.is_processing = False
             return
+        self.is_processing = True
+        self.error_message = ""
+        self.audio_response_src = ""
+        yield
         try:
             uploaded_file = files[0]
             upload_data = await uploaded_file.read()
@@ -106,7 +109,6 @@ class CallState(rx.State):
             upload_dir.mkdir(parents=True, exist_ok=True)
             unique_filename = f"{uuid.uuid4()}_{uploaded_file.name}"
             file_path = upload_dir / unique_filename
-            print("FILE PATH FOR THE AUDIO", file_path)
             with file_path.open("wb") as f:
                 f.write(upload_data)
             self.uploaded_audio_path = str(file_path)
