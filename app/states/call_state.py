@@ -3,11 +3,6 @@ import asyncio
 import os
 from pathlib import Path
 import logging
-import reflex as rx
-import asyncio
-import os
-from pathlib import Path
-import logging
 import uuid
 import base64
 from app.states.menu_state import MenuState
@@ -94,6 +89,7 @@ class CallState(rx.State):
         # if not sample_audio_path.exists():
         #     logging.error("Sample audio file 'assets/sample.mp3' not found.")
         #     return None
+
         try:
             upload_dir = rx.get_upload_dir()
             upload_dir.mkdir(parents=True, exist_ok=True)
