@@ -53,24 +53,24 @@ class CallState(rx.State):
             file=audio_file
         )
 
-        menu_state = self.get_state(MenuState)
+        async with self:
+            menu_state = await self.get_state(MenuState)
 
-        menu_to_str(menu_state.id)
+            
 
-
-        stream = client.responses.create(
-            model="gpt-4.1-mini-2025-04-14",
-            input=[
-                {
-                    "role":"system",
-                    "content": "answer questions from the user about the menu, recommend it stuff. you will be the sommelier of it at a bar " + menu_to_str(menu_state.id)
-                },
-                {
-                    "role": "user",
-                    "content": transcription.text,
-                },
-            ],
-        )
+            stream = client.responses.create(
+                model="gpt-4.1-mini-2025-04-14",
+                input=[
+                    {
+                        "role":"system",
+                        "content": "answer questions from the user about the menu, recommend it stuff. you will be the sommelier of it at a bar " + menu_to_str(menu_state.id)
+                    },
+                    {
+                        "role": "user",
+                        "content": transcription.text,
+                    },
+                ],
+            )
 
         elevenlabs = ElevenLabs(
             api_key=os.getenv("ELEVENLABS_API_KEY"),
