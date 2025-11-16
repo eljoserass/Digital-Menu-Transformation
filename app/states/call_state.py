@@ -58,10 +58,6 @@ class CallState(rx.State):
             model_id="eleven_multilingual_v2",
             output_format="mp3_44100_128",
         )
-        with open("output.mp3", "wb") as f:
-            for chunk in audio:
-                if chunk:
-                    f.write(chunk)
         try:
             upload_dir = rx.get_upload_dir()
             upload_dir.mkdir(parents=True, exist_ok=True)
