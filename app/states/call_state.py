@@ -23,6 +23,15 @@ from openai import OpenAI
 CALL_UPLOAD_ID = "audio_upload"
 
 
+
+def menu_to_str(menu_id: str) -> str:
+    menu_path = Path("menus") / f"{menu_id}.json"
+    print("MENU PATH = ", menu_path)
+    if menu_path.exists():
+        with open(menu_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return ""
+
 class CallState(rx.State):
     """State for the voice call interface."""
 
@@ -31,6 +40,7 @@ class CallState(rx.State):
     error_message: str = ""
     audio_response_src: str = ""
     uploaded_audio_path: str = ""
+
 
     async def _generate_audio_response(self) -> str | None:
         """Generates a mock audio response by copying a sample file to a new unique path."""
@@ -43,16 +53,21 @@ class CallState(rx.State):
             file=audio_file
         )
 
+        menu_state = self.get_state(MenuState)
+
+        menu_to_str(menu_state.id)
+
+
         stream = client.responses.create(
             model="gpt-4.1-mini-2025-04-14",
             input=[
                 {
                     "role":"system",
-                    "content": "asdasd"
+                    "content": "answer questions from the user about the menu, recommend it stuff. you will be the sommelier of it at a bar " + menu_to_str(menu_state.id)
                 },
                 {
                     "role": "user",
-                    "content": "que opinas de esto " + transcription.text,
+                    "content": transcription.text,
                 },
             ],
         )
