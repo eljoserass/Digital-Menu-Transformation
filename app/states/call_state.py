@@ -3,11 +3,6 @@ import asyncio
 import os
 from pathlib import Path
 import logging
-import reflex as rx
-import asyncio
-import os
-from pathlib import Path
-import logging
 import uuid
 import base64
 from app.states.menu_state import MenuState
@@ -26,11 +21,23 @@ class CallState(rx.State):
 
     async def _generate_audio_response(self) -> str | None:
         """Generates a mock audio response by copying a sample file to a new unique path."""
+        menu_state = await self.get_state(MenuState)
+        current_menu_id = menu_state.current_menu_id
+        logging.info(f"Generating audio response for menu_id: {current_menu_id}")
         await asyncio.sleep(2)
         sample_audio_path = Path("assets") / "sample.mp3"
         if not sample_audio_path.exists():
             logging.error("Sample audio file 'assets/sample.mp3' not found.")
-            return None
+            try:
+                upload_dir = rx.get_upload_dir()
+                upload_dir.mkdir(parents=True, exist_ok=True)
+                dummy_path = upload_dir / "dummy.mp3"
+                dummy_path.touch()
+                sample_audio_path = dummy_path
+                logging.info("Created dummy sample audio file.")
+            except Exception as e:
+                logging.exception(f"Could not create dummy sample audio: {e}")
+                return None
         try:
             upload_dir = rx.get_upload_dir()
             upload_dir.mkdir(parents=True, exist_ok=True)
